@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheda Palestra Giovanna</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6b46c1 0%, #8b5cf6 50%, #a855f7 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(107, 70, 193, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #6b46c1, #8b5cf6);
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .workout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+        
+        .day-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(107, 70, 193, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(107, 70, 193, 0.25);
+        }
+        
+        .day-header {
+            padding: 20px;
+            color: white;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .alta-a { background: linear-gradient(135deg, #6b46c1, #7c3aed); }
+        .bassa-a { background: linear-gradient(135deg, #8b5cf6, #a855f7); }
+        .alta-b { background: linear-gradient(135deg, #a855f7, #c084fc); }
+        .bassa-b { background: linear-gradient(135deg, #c084fc, #ddd6fe); color: #4c1d95 !important; }
+        
+        .day-content {
+            padding: 25px;
+        }
+        
+        .warmup {
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #6b46c1;
+        }
+        
+        .warmup h4 {
+            color: #6b46c1;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .warmup h4::before {
+            content: "🔥";
+            margin-right: 8px;
+        }
+        
+        .exercise-section h4 {
+            color: #333;
+            margin: 20px 0 15px 0;
+            display: flex;
+            align-items: center;
+            font-size: 1.1em;
+        }
+        
+        .exercise-section h4::before {
+            content: "💪";
+            margin-right: 8px;
+        }
+        
+        .exercise-list {
+            list-style: none;
+        }
+        
+        .exercise-list li {
+            background: #f8f9fa;
+            margin: 8px 0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 3px solid #6b46c1;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .exercise-list li:hover {
+            background: #ede9fe;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(107, 70, 193, 0.2);
+        }
+        
+        .exercise-name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .exercise-sets {
+            background: #6b46c1;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .special-section {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .addome {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .cardio {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .stretching {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+        }
+        
+        .special-section h5 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .addome h5::before { content: "🔥"; margin-right: 8px; }
+        .cardio h5::before { content: "❤️"; margin-right: 8px; }
+        .stretching h5::before { content: "🧘"; margin-right: 8px; }
+        
+        .circuit {
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        
+        .circuit ul {
+            margin-left: 20px;
+        }
+        
+        .circuit ul li {
+            background: none;
+            border: none;
+            padding: 5px 0;
+            margin: 3px 0;
+            cursor: default;
+        }
+        
+        .notes {
+            background: linear-gradient(135deg, #6b46c1, #8b5cf6);
+            color: white;
+            padding: 30px;
+            margin: 0;
+        }
+        
+        .notes h3 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        
+        .notes ul {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .notes ul li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .notes ul li strong {
+            color: #fde047;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s;
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s;
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #6b46c1, #8b5cf6);
+            color: white;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .modal-body {
+            padding: 25px;
+        }
+        
+        .exercise-image {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+            border-radius: 10px;
+            margin: 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #6b46c1;
+        }
+        
+        .tips-section {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .tips-section h4 {
+            color: #6b46c1;
+            margin-bottom: 10px;
+        }
+        
+        .tip-item {
+            background: white;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border-left: 3px solid #6b46c1;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .workout-grid {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            body {
+                padding: 10px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💪 Scheda Palestra di Giovanna</h1>
+            <p>4 Giorni/Settimana • Settembre 2025</p>
+        </div>
+        
+        <div class="workout-grid">
+            <!-- Giorno 1 -->
+            <div class="day-card">
+                <div class="day-header alta-a">
+                    Giorno 1 - Alta A
+                </div>
+                <div class="day-content">
+                    <div class="warmup">
+                        <h4>Riscaldamento</h4>
+                        <p>5' di camminata o ellittica</p>
+                    </div>
+                    
+                    <div class="exercise-section">
+                        <h4>Esercizi</h4>
+                        <ul class="exercise-list">
+                            <li onclick="showExerciseInfo('panca_piana')">
+                                <span class="exercise-name">Panca piana</span>
+                                <span class="exercise-sets">4×8-10</span>
+                            </li>
+                            <li onclick="showExerciseInfo('chest_press')">
+                                <span class="exercise-name">Chest Press (macchina)</span>
+                                <span class="exercise-sets">3×10-12</span>
+                            </li>
+                            <li onclick="showExerciseInfo('panca_inclinata_manubri')">
+                                <span class="exercise-name">Spinte manubri panca inclinata</span>
+                                <span class="exercise-sets">3×10-12</span>
+                            </li>
+                            <li onclick="showExerciseInfo('shoulder_press')">
+                                <span class="exercise-name">Shoulder Press (macchina)</span>
+                                <span class="exercise-sets">3×10-12</span>
+                            </li>
+                            <li onclick="showExerciseInfo('alzate_laterali_cavi')">
+                                <span class="exercise-name">Alzate laterali ai cavi</span>
+                                <span class="exercise-sets">3×12-15</span>
+                            </li>
+                            <li onclick="showExerciseInfo('french_press')">
+                                <span class="exercise-name">French press con bilanciere</span>
+                                <span class="exercise-sets">3×10-12</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="special-section addome">
+                        <h5>Addome</h5>
+                        <p>Plank laterale 3×30" per lato</p>
+                    </div>
+                    
+                    <div class="special-section cardio">
+                        <h5>Cardio</h5>
+                        <p>Tapis o cyclette 20' a ritmo moderato</p>
+                    </div>
+                    
+                    <div class="special-section stretching">
+                        <h5>Stretching</h5>
+                        <p>Pettorali, dorsali, spalle e braccia (5-7')</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Giorno 2 -->
+            <div class="day-card">
+                <div class="day-header bassa-a">
+                    Giorno 2 - Bassa A
+                </div>
+                <div class="day-content">
+                    <div class="warmup">
+                        <h4>Riscaldamento</h4>
+                        <p>15' di camminata in salita su tapis o cyclette aumentando intensità</p>
+                    </div>
+                    
+                    <div class="exercise-section">
+                        <h4>Esercizi</h4>
+                        <ul class="exercise-list">
+                            <li onclick="showExerciseInfo('hip_thrust')">
+                                <span class="exercise-name">Hip Thrust</span>
+                                <span class="exercise-sets">4×10-12</span>
+                            </li>
+                            <li onclick="showExerciseInfo('leg_press')">
+                                <span class="exercise-name">Leg Press</span>
+                                <span class="exercise-sets">3×12-15</span>
+                            </li>
+                            <li onclick="showExerciseInfo('affondi')">
+                                <span class="exercise-name">Affondi</span>
+                                <span class="exercise-sets">3×12/gamba</span>
+                            </li>
+                            <li onclick="showExerciseInfo('leg_extension')">
+                                <span class="exercise-name">Leg Extension</span>
+                                <span class="exercise-sets">3×12-15</span>
+                            </li>
+                            <li onclick="showExerciseInfo('leg_curl')">
+                                <span class="exercise-name">Leg Curl</span>
+                                <span class="exercise-sets">3×12-15</span>
+                            </li>
+                            <li onclick="showExerciseInfo('polpacci_pressa')">
+                                <span class="exercise-name">Polpacci alla pressa</span>
+                                <span class="exercise-sets">3×15-20</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="special-section addome">
+                        <h5>Addome - Circuito</h5>
+                        <div class="circuit">
+                            <p><strong>3 giri, 90" di recupero:</strong></p>
+                            <ul>
+                                <li>• Bicicletta 30"</li>
+                                <li>• Crunch 30"</li>
+                                <li>• Tocca talloni ×12</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="special-section cardio">
+                        <h5>Cardio</h5>
+                        <p>20' di camminata in salita su tapis o cyclette intensa</p>
+                    </div>
+                    
+                    <div class="special-section stretching">
+                        <h5>Stretching</h5>
+                        <p>Quadricipiti, glutei, femorali (5-7')</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Giorno 3 -->
+            <div class="day-card">
+                <div class="day-header alta-b">
+                    Giorno 3 - Alta B
+                </div>
+                <div class="day-content">
+                    <div class="warmup">
+                        <h4>Riscaldamento</h4>
+                        <p>5' di ellittica o camminata</p>
+                    </div>
+                    
+                    <div class="exercise-section">
+                        <h4>Esercizi</h4>
+                        <ul class="exercise-list">
+                            <li onclick="showExerciseInfo('panca_inclinata_manubri')">
+                                <span class="exercise-name">Panca inclinata con manubri</span>
+                                <span class="exercise-sets">4×8-10</span>
+                            </li>
+                            <li onclick="showExerciseInfo('chest_fly')">
+                                <span class="exercise-name">Chest Fly (macchina)</span>
+                                <span class="exercise-sets">3×10-12</span>
+                            </li>
+                            <li onclick="showExerciseInfo('lat_machine_inversa')">
+                                <span class="exercise-name">Lat Machine presa inversa</span>
+                                <span class="exercise-sets">4×8-10</span>
+                            </li>
+                            <li onclick="showExerciseInfo('low_row')">
+                                <span class="exercise-name">Low Row (macchina)</span>
+                                <span class="exercise-sets">3×10-12</span>
+                            </li>
+                            <li onclick="showExerciseInfo('trazioni_assistite')">
+                                <span class="exercise-name">Trazioni assistite</span>
+                                <span class="exercise-sets">3×8-12</span>
+                            </li>
+                            <li onclick="showExerciseInfo('curl_manubri')">
+                                <span class="exercise-name">Curl manubri</span>
+                                <span class="exercise-sets">3×10-12</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="special-section addome">
+                        <h5>Addome</h5>
+                        <p>Plank 3×max</p>
+                    </div>
+                    
+                    <div class="special-section cardio">
+                        <h5>Cardio</h5>
+                        <p>Ellittica o cyclette 20'</p>
+                    </div>
+                    
+                    <div class="special-section stretching">
+                        <h5>Stretching</h5>
+                        <p>Spalle, schiena, alta e braccia (5-7')</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Giorno 4 -->
+            <div class="day-card">
+                <div class="day-header bassa-b">
+                    Giorno 4 - Bassa B
+                </div>
+                <div class="day-content">
+                    <div class="warmup">
+                        <h4>Riscaldamento</h4>
+                        <p>15' cyclette o tapis a intensità crescente</p>
+                    </div>
+                    
+                    <div class="exercise-section">
+                        <h4>Esercizi</h4>
+                        <ul class="exercise-list">
+                            <li onclick="showExerciseInfo('hip_thrust')">
+                                <span class="exercise-name">Hip Thrust</span>
+                                <span class="exercise-sets">4×8-10</span>
+                            </li>
+                            <li onclick="showExerciseInfo('leg_extension')">
+                                <span class="exercise-name">Leg Extension</span>
+                                <span class="exercise-sets">3×10-12</span>
+                            </li>
+                            <li onclick="showExerciseInfo('leg_press')">
+                                <span class="exercise-name">Leg Press</span>
+                                <span class="exercise-sets">3×12-15</span>
+                            </li>
+                            <li onclick="showExerciseInfo('stacchi_rumeni')">
+                                <span class="exercise-name">Stacchi rumeni</span>
+                                <span class="exercise-sets">3×10-12</span>
+                            </li>
+                            <li onclick="showExerciseInfo('leg_curl')">
+                                <span class="exercise-name">Leg Curl</span>
+                                <span class="exercise-sets">3×10-12</span>
+                            </li>
+                            <li onclick="showExerciseInfo('adduttori_abduttori')">
+                                <span class="exercise-name">Adduttori/Abduttori (macchine)</span>
+                                <span class="exercise-sets">3×12-15</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="special-section addome">
+                        <h5>Addome - Circuito</h5>
+                        <div class="circuit">
+                            <p><strong>3 giri, 90" di recupero:</strong></p>
+                            <ul>
+                                <li>• Russian twist 30"</li>
+                                <li>• Plank laterale con sollevamento gamba 30" per lato</li>
+                                <li>• Crunch ×12</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="special-section cardio">
+                        <h5>Cardio</h5>
+                        <p>20' di camminata in salita su tapis o cyclette intensa</p>
+                    </div>
+                    
+                    <div class="special-section stretching">
+                        <h5>Stretching</h5>
+                        <p>Catena posteriore, anche e lombari (5-7')</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="notes">
+            <h3>📝 Note Importanti per Giovanna</h3>
+            <ul>
+                <li><strong>Recupero tra le serie:</strong> 60-90 secondi per gli esercizi principali, 45-60 per gli accessori</li>
+                <li><strong>Progressione:</strong> Aumenta il peso quando riesci a completare tutte le serie con 2 ripetizioni di riserva</li>
+                <li><strong>Idratazione:</strong> Bevi acqua durante tutto l'allenamento</li>
+                <li><strong>Riposo:</strong> Almeno un giorno di riposo tra le sessioni consecutive</li>
+                <li><strong>Clicca sugli esercizi:</strong> Per vedere tips e consigli di esecuzione!</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal per i tips degli esercizi -->
+    <div id="exerciseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title" id="modalTitle">Nome Esercizio</span>
+                <button class="close">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Contenuto dinamico -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const exerciseData = {
+            'panca_piana': {
+                title: 'Panca Piana',
+                icon: '🏋️‍♀️',
+                tips: [
+                    'Mantieni sempre i piedi ben saldi a terra',
+                    'Stringi le scapole e mantieni l\'arco naturale della schiena',
+                    'Il bilanciere deve toccare il petto all\'altezza dei capezzoli',
+                    'Spingi in modo esplosivo ma controlla sempre la fase eccentrica',
+                    'Non rimbalzare il bilanciere sul petto'
+                ]
+            },
+            'chest_press': {
+                title: 'Chest Press (Macchina)',
+                icon: '🔧',
+                tips: [
+                    'Regola l\'altezza del sedile: le maniglie devono essere all\'altezza del petto',
+                    'Mantieni la schiena ben appoggiata allo schienale',
+                    'Non estendere completamente le braccia per non stressare i gomiti',
+                    'Controlla il movimento sia in spinta che in ritorno',
+                    'Respira espirando durante la spinta'
+                ]
+            },
+            'panca_inclinata_manubri': {
+                title: 'Panca Inclinata con Manubri',
+                icon: '💪',
+                tips: [
+                    'Inclina la panca a 30-45 gradi per colpire il petto alto',
+                    'I manubri devono scendere più in basso del petto per un maggior stretch',
+                    'Mantieni sempre il controllo dei pesi, non usare l\'inerzia',
+                    'I gomiti devono essere leggermente flessi, non completamente estesi',
+                    'Concentrati sulla contrazione del petto alto'
+                ]
+            },
+            'shoulder_press': {
+                title: 'Shoulder Press (Macchina)',
+                icon: '🦾',
+                tips: [
+                    'Regola l\'altezza del sedile: le spalle devono essere allineate alle maniglie',
+                    'Mantieni la schiena dritta e gli addominali contratti',
+                    'Non spingere completamente sopra la testa per proteggere le spalle',
+                    'Scendi controllando il peso fino all\'altezza delle orecchie',
+                    'Evita movimenti bruschi e mantieni sempre il controllo'
+                ]
+            },
+            'alzate_laterali_cavi': {
+                title: 'Alzate Laterali ai Cavi',
+                icon: '🕊️',
+                tips: [
+                    'Posizionati al centro della macchina con i cavi incrociati',
+                    'Mantieni una leggera flessione del gomito durante tutto il movimento',
+                    'Solleva fino all\'altezza delle spalle, non oltre',
+                    'Controlla la fase di discesa per massimizzare il lavoro muscolare',
+                    'Non usare il corpo per aiutarti, isola le spalle'
+                ]
+            },
+            'french_press': {
+                title: 'French Press con Bilanciere',
+                icon: '🎯',
+                tips: [
+                    'Usa una presa leggermente più stretta rispetto alle spalle',
+                    'I gomiti devono rimanere fermi e paralleli durante tutto il movimento',
+                    'Scendi controllando il bilanciere fino alla fronte o poco dietro',
+                    'Estendi solo gli avambracci, non muovere le spalle',
+                    'Inizia con pesi leggeri per padroneggiare la tecnica'
+                ]
+            },
+            'hip_thrust': {
+                title: 'Hip Thrust',
+                icon: '🍑',
+                tips: [
+                    'Appoggia la parte alta della schiena su una panca stabile',
+                    'I piedi devono essere ben piantati a terra, larghezza spalle',
+                    'Spingi attraverso i talloni contraendo forte i glutei',
+                    'In cima al movimento, glutei contratti e bacino in linea',
+                    'Scendi controllando e senti lo stretch sui glutei'
+                ]
+            },
+            'leg_press': {
+                title: 'Leg Press',
+                icon: '🦵',
+                tips: [
+                    'Posiziona i piedi alla larghezza delle spalle sulla pedana',
+                    'Non bloccare completamente le ginocchia in estensione',
+                    'Scendi fino a formare un angolo di 90° con le ginocchia',
+                    'Mantieni la schiena sempre appoggiata allo schienale',
+                    'Spingi con tutta la pianta del piede, non solo i talloni'
+                ]
+            },
+            'affondi': {
+                title: 'Affondi',
+                icon: '🚶‍♀️',
+                tips: [
+                    'Il passo deve essere ampio ma naturale',
+                    'Scendi verticalmente, non spostarti in avanti',
+                    'Il ginocchio davanti non deve superare la punta del piede',
+                    'Il ginocchio dietro deve quasi toccare terra',
+                    'Mantieni il busto eretto durante tutto il movimento'
+                ]
+            },
+            'leg_extension': {
+                title: 'Leg Extension',
+                icon: '📐',
+                tips: [
+                    'Regola la macchina: la schiena deve essere ben appoggiata',
+                    'I cuscinetti devono essere sopra le caviglie, non sui piedi',
+                    'Estendi le gambe senza bloccare completamente le ginocchia',
+                    'Controlla la fase di discesa per massimizzare il lavoro',
+                    'Non usare pesi eccessivi che compromettano la tecnica'
+                ]
+            },
+            'leg_curl': {
+                title: 'Leg Curl',
+                icon: '🌙',
+                tips: [
+                    'Posizionati correttamente: anche allineate al fulcro della macchina',
+                    'I cuscinetti devono essere dietro le caviglie',
+                    'Contrai i femorali portando i talloni verso i glutei',
+                    'Non sollevare i fianchi dalla panca durante il movimento',
+                    'Controlla sempre la fase di ritorno'
+                ]
+            },
+            'polpacci_pressa': {
+                title: 'Polpacci alla Pressa',
+                icon: '🦶',
+                tips: [
+                    'Posiziona solo le punte dei piedi sulla pedana, talloni fuori',
+                    'Mantieni le gambe leggermente flesse per tutta la serie',
+                    'Scendi fino al massimo stretch del polpaccio',
+                    'Spingi sulle punte dei piedi contraendo forte i polpacci',
+                    'Fai una pausa in contrazione per massimizzare il lavoro'
+                ]
+            },
+            'chest_fly': {
+                title: 'Chest Fly (Macchina)',
+                icon: '🦋',
+                tips: [
+                    'Regola il sedile: le spalle devono essere allineate al fulcro',
+                    'Mantieni sempre una leggera flessione dei gomiti',
+                    'Porta le braccia avanti come se stessi abbracciando un albero',
+                    'Senti lo stretch del petto quando apri le braccia',
+                    'Non usare il corpo per aiutarti nel movimento'
+                ]
+            },
+            'lat_machine_inversa': {
+                title: 'Lat Machine Presa Inversa',
+                icon: '🎯',
+                tips: [
+                    'Usa la presa supina (palmi verso di te) più stretta delle spalle',
+                    'Siediti con le ginocchia ben fissate sotto i cuscinetti',
+                    'Tira la barra verso il petto, non dietro la nuca',
+                    'Concentrati sul tirare con i dorsali, non con le braccia',
+                    'Controlla la fase di ritorno della barra'
+                ]
+            },
+            'low_row': {
+                title: 'Low Row (Macchina)',
+                icon: '🚣',
+                tips: [
+                    'Mantieni la schiena dritta e il petto in fuori',
+                    'Tira le maniglie verso l\'addome, non verso il petto',
+                    'Stringi le scapole insieme alla fine del movimento',
+                    'Non usare il corpo per dondolare e aiutarti',
+                    'Senti il lavoro sui dorsali e sui muscoli centrali della schiena'
+                ]
+            },
+            'trazioni_assistite': {
+                title: 'Trazioni Assistite',
+                icon: '🆙',
+                tips: [
+                    'Imposta l\'assistenza gradualmente, riducila nel tempo',
+                    'Usa una presa leggermente più larga delle spalle',
+                    'Inizia dalla posizione di braccia estese, non oscillare',
+                    'Tira il corpo verso l\'alto concentrandoti sui dorsali',
+                    'Scendi controllando il movimento, non lasciarti cadere'
+                ]
+            },
+            'curl_manubri': {
+                title: 'Curl con Manubri',
+                icon: '💪',
+                tips: [
+                    'Mantieni i gomiti fissi ai fianchi durante tutto il movimento',
+                    'Non oscillare il corpo per aiutarti',
+                    'Contrai i bicipiti in cima al movimento',
+                    'Scendi controllando la fase eccentrica',
+                    'Puoi alternarti tra le braccia per maggior concentrazione'
+                ]
+            },
+            'stacchi_rumeni': {
+                title: 'Stacchi Rumeni',
+                icon: '🏗️',
+                tips: [
+                    'Mantieni sempre una leggera flessione delle ginocchia',
+                    'Sposta i fianchi indietro, non piegare solo la schiena',
+                    'La barra deve scorrere vicina alle gambe',
+                    'Senti lo stretch dei femorali nella fase di discesa',
+                    'Contrai forte i glutei per tornare in posizione eretta'
+                ]
+            },
+            'adduttori_abduttori': {
+                title: 'Adduttori/Abduttori',
+                icon: '⚡',
+                tips: [
+                    'Regola la macchina secondo la tua apertura naturale',
+                    'Mantieni la schiena ben appoggiata allo schienale',
+                    'Per gli adduttori: stringi le gambe senza movimenti bruschi',
+                    'Per gli abduttori: apri le gambe controllando il movimento',
+                    'Non usare pesi eccessivi, concentrati sulla qualità del movimento'
+                ]
+            }
+        };
+
+        const modal = document.getElementById('exerciseModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const closeBtn = document.querySelector('.close');
+
+        function showExerciseInfo(exerciseKey) {
+            const exercise = exerciseData[exerciseKey];
+            if (!exercise) return;
+
+            modalTitle.textContent = exercise.title;
+            
+            let bodyContent = `
+                <div class="exercise-image">${exercise.icon}</div>
+                <div class="tips-section">
+                    <h4>💡 Tips per l'esecuzione:</h4>
+            `;
+            
+            exercise.tips.forEach(tip => {
+                bodyContent += `<div class="tip-item">✓ ${tip}</div>`;
+            });
+            
+            bodyContent += `</div>`;
+            modalBody.innerHTML = bodyContent;
+            
+            modal.style.display = 'block';
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Chiudi con ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
