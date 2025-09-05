@@ -138,6 +138,16 @@
             box-shadow: 0 4px 12px rgba(107, 70, 193, 0.2);
         }
         
+        .warmup-exercise {
+            background: #fff3cd !important;
+            border-left: 3px solid #f59e0b !important;
+            font-style: italic;
+        }
+        
+        .warmup-exercise:hover {
+            background: #fef3c7 !important;
+        }
+        
         .exercise-name {
             font-weight: 600;
             color: #333;
@@ -150,6 +160,10 @@
             border-radius: 20px;
             font-size: 0.9em;
             font-weight: bold;
+        }
+        
+        .warmup-sets {
+            background: #f59e0b !important;
         }
         
         .special-section {
@@ -299,14 +313,26 @@
         
         .exercise-image {
             width: 100%;
-            max-width: 300px;
-            height: 200px;
+            max-width: 400px;
+            height: 250px;
             background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
             border-radius: 10px;
             margin: 15px auto;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .exercise-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .exercise-image-placeholder {
             font-size: 48px;
             color: #6b46c1;
         }
@@ -384,29 +410,33 @@
                     <div class="exercise-section">
                         <h4>Esercizi</h4>
                         <ul class="exercise-list">
-                            <li onclick="showExerciseInfo('panca_piana')">
-                                <span class="exercise-name">Panca piana</span>
-                                <span class="exercise-sets">4×8-10</span>
+                            <li onclick="showExerciseInfo('lat_machine_riscaldamento')" class="warmup-exercise">
+                                <span class="exercise-name">Lat Machine presa classica</span>
+                                <span class="exercise-sets warmup-sets">1×riscaldamento</span>
                             </li>
-                            <li onclick="showExerciseInfo('chest_press')">
-                                <span class="exercise-name">Chest Press (macchina)</span>
-                                <span class="exercise-sets">3×10-12</span>
+                            <li onclick="showExerciseInfo('lat_machine_classica')">
+                                <span class="exercise-name">Lat Machine presa classica</span>
+                                <span class="exercise-sets">3×10</span>
                             </li>
-                            <li onclick="showExerciseInfo('panca_inclinata_manubri')">
-                                <span class="exercise-name">Spinte manubri panca inclinata</span>
-                                <span class="exercise-sets">3×10-12</span>
+                            <li onclick="showExerciseInfo('pulley')">
+                                <span class="exercise-name">Pulley</span>
+                                <span class="exercise-sets">3×10</span>
                             </li>
-                            <li onclick="showExerciseInfo('shoulder_press')">
-                                <span class="exercise-name">Shoulder Press (macchina)</span>
-                                <span class="exercise-sets">3×10-12</span>
+                            <li onclick="showExerciseInfo('chest_fly_riscaldamento')" class="warmup-exercise">
+                                <span class="exercise-name">Chest Fly</span>
+                                <span class="exercise-sets warmup-sets">1×riscaldamento</span>
                             </li>
-                            <li onclick="showExerciseInfo('alzate_laterali_cavi')">
-                                <span class="exercise-name">Alzate laterali ai cavi</span>
-                                <span class="exercise-sets">3×12-15</span>
+                            <li onclick="showExerciseInfo('chest_fly')">
+                                <span class="exercise-name">Chest Fly</span>
+                                <span class="exercise-sets">3×12</span>
                             </li>
-                            <li onclick="showExerciseInfo('french_press')">
-                                <span class="exercise-name">French press con bilanciere</span>
-                                <span class="exercise-sets">3×10-12</span>
+                            <li onclick="showExerciseInfo('panca_piana_bilanciere')">
+                                <span class="exercise-name">Panca piana con bilanciere</span>
+                                <span class="exercise-sets">3×10</span>
+                            </li>
+                            <li onclick="showExerciseInfo('curl_cavo_basso')">
+                                <span class="exercise-name">Curl al cavo basso</span>
+                                <span class="exercise-sets">3×12</span>
                             </li>
                         </ul>
                     </div>
@@ -442,29 +472,33 @@
                     <div class="exercise-section">
                         <h4>Esercizi</h4>
                         <ul class="exercise-list">
+                            <li onclick="showExerciseInfo('hip_thrust_riscaldamento')" class="warmup-exercise">
+                                <span class="exercise-name">Hip Thrust</span>
+                                <span class="exercise-sets warmup-sets">1×riscaldamento</span>
+                            </li>
                             <li onclick="showExerciseInfo('hip_thrust')">
                                 <span class="exercise-name">Hip Thrust</span>
-                                <span class="exercise-sets">4×10-12</span>
-                            </li>
-                            <li onclick="showExerciseInfo('leg_press')">
-                                <span class="exercise-name">Leg Press</span>
-                                <span class="exercise-sets">3×12-15</span>
-                            </li>
-                            <li onclick="showExerciseInfo('affondi')">
-                                <span class="exercise-name">Affondi</span>
-                                <span class="exercise-sets">3×12/gamba</span>
+                                <span class="exercise-sets">3×10</span>
                             </li>
                             <li onclick="showExerciseInfo('leg_extension')">
                                 <span class="exercise-name">Leg Extension</span>
-                                <span class="exercise-sets">3×12-15</span>
+                                <span class="exercise-sets">3×12</span>
                             </li>
                             <li onclick="showExerciseInfo('leg_curl')">
                                 <span class="exercise-name">Leg Curl</span>
-                                <span class="exercise-sets">3×12-15</span>
+                                <span class="exercise-sets">3×12</span>
                             </li>
-                            <li onclick="showExerciseInfo('polpacci_pressa')">
-                                <span class="exercise-name">Polpacci alla pressa</span>
-                                <span class="exercise-sets">3×15-20</span>
+                            <li onclick="showExerciseInfo('kick_back_macchina')">
+                                <span class="exercise-name">Macchinario Kick Back</span>
+                                <span class="exercise-sets">3×12</span>
+                            </li>
+                            <li onclick="showExerciseInfo('abductor')">
+                                <span class="exercise-name">Abductor</span>
+                                <span class="exercise-sets">3×15</span>
+                            </li>
+                            <li onclick="showExerciseInfo('alzate_laterali')">
+                                <span class="exercise-name">Alzate laterali</span>
+                                <span class="exercise-sets">3×12</span>
                             </li>
                         </ul>
                     </div>
@@ -507,29 +541,33 @@
                     <div class="exercise-section">
                         <h4>Esercizi</h4>
                         <ul class="exercise-list">
-                            <li onclick="showExerciseInfo('panca_inclinata_manubri')">
-                                <span class="exercise-name">Panca inclinata con manubri</span>
-                                <span class="exercise-sets">4×8-10</span>
+                            <li onclick="showExerciseInfo('panca_inclinata_bilanciere_riscaldamento')" class="warmup-exercise">
+                                <span class="exercise-name">Panca inclinata con bilanciere</span>
+                                <span class="exercise-sets warmup-sets">1×riscaldamento</span>
                             </li>
-                            <li onclick="showExerciseInfo('chest_fly')">
-                                <span class="exercise-name">Chest Fly (macchina)</span>
-                                <span class="exercise-sets">3×10-12</span>
+                            <li onclick="showExerciseInfo('panca_inclinata_bilanciere')">
+                                <span class="exercise-name">Panca inclinata con bilanciere</span>
+                                <span class="exercise-sets">3×10</span>
                             </li>
-                            <li onclick="showExerciseInfo('lat_machine_inversa')">
-                                <span class="exercise-name">Lat Machine presa inversa</span>
-                                <span class="exercise-sets">4×8-10</span>
+                            <li onclick="showExerciseInfo('chest_press')">
+                                <span class="exercise-name">Chest Press (macchinario)</span>
+                                <span class="exercise-sets">3×12</span>
                             </li>
-                            <li onclick="showExerciseInfo('low_row')">
-                                <span class="exercise-name">Low Row (macchina)</span>
-                                <span class="exercise-sets">3×10-12</span>
+                            <li onclick="showExerciseInfo('tirate_dorso_riscaldamento')" class="warmup-exercise">
+                                <span class="exercise-name">Macchinario tirate dorso</span>
+                                <span class="exercise-sets warmup-sets">1×riscaldamento</span>
+                            </li>
+                            <li onclick="showExerciseInfo('tirate_dorso')">
+                                <span class="exercise-name">Macchinario tirate dorso</span>
+                                <span class="exercise-sets">3×10</span>
                             </li>
                             <li onclick="showExerciseInfo('trazioni_assistite')">
                                 <span class="exercise-name">Trazioni assistite</span>
-                                <span class="exercise-sets">3×8-12</span>
+                                <span class="exercise-sets">3×10</span>
                             </li>
-                            <li onclick="showExerciseInfo('curl_manubri')">
-                                <span class="exercise-name">Curl manubri</span>
-                                <span class="exercise-sets">3×10-12</span>
+                            <li onclick="showExerciseInfo('macchinario_tricipiti')">
+                                <span class="exercise-name">Macchinario tricipiti</span>
+                                <span class="exercise-sets">3×15</span>
                             </li>
                         </ul>
                     </div>
@@ -565,29 +603,33 @@
                     <div class="exercise-section">
                         <h4>Esercizi</h4>
                         <ul class="exercise-list">
-                            <li onclick="showExerciseInfo('hip_thrust')">
-                                <span class="exercise-name">Hip Thrust</span>
-                                <span class="exercise-sets">4×8-10</span>
+                            <li onclick="showExerciseInfo('leg_press_verticale_riscaldamento')" class="warmup-exercise">
+                                <span class="exercise-name">Leg Press verticale (piano di sotto)</span>
+                                <span class="exercise-sets warmup-sets">1×riscaldamento</span>
                             </li>
-                            <li onclick="showExerciseInfo('leg_extension')">
-                                <span class="exercise-name">Leg Extension</span>
-                                <span class="exercise-sets">3×10-12</span>
+                            <li onclick="showExerciseInfo('leg_press_verticale')">
+                                <span class="exercise-name">Leg Press verticale (piano di sotto)</span>
+                                <span class="exercise-sets">3×12</span>
                             </li>
-                            <li onclick="showExerciseInfo('leg_press')">
-                                <span class="exercise-name">Leg Press</span>
-                                <span class="exercise-sets">3×12-15</span>
+                            <li onclick="showExerciseInfo('kick_back_cavo')">
+                                <span class="exercise-name">Kick back al cavo</span>
+                                <span class="exercise-sets">3×12-15/gamba</span>
                             </li>
-                            <li onclick="showExerciseInfo('stacchi_rumeni')">
-                                <span class="exercise-name">Stacchi rumeni</span>
-                                <span class="exercise-sets">3×10-12</span>
+                            <li onclick="showExerciseInfo('leg_press_orizzontale')">
+                                <span class="exercise-name">Leg Press orizzontale</span>
+                                <span class="exercise-sets">3×10</span>
                             </li>
-                            <li onclick="showExerciseInfo('leg_curl')">
-                                <span class="exercise-name">Leg Curl</span>
-                                <span class="exercise-sets">3×10-12</span>
+                            <li onclick="showExerciseInfo('macchinario_polpacci')">
+                                <span class="exercise-name">Macchinario polpacci</span>
+                                <span class="exercise-sets">3×12</span>
                             </li>
-                            <li onclick="showExerciseInfo('adduttori_abduttori')">
-                                <span class="exercise-name">Adduttori/Abduttori (macchine)</span>
-                                <span class="exercise-sets">3×12-15</span>
+                            <li onclick="showExerciseInfo('adductor')">
+                                <span class="exercise-name">Adductor</span>
+                                <span class="exercise-sets">3×15</span>
+                            </li>
+                            <li onclick="showExerciseInfo('shoulder_press')">
+                                <span class="exercise-name">Shoulder Press</span>
+                                <span class="exercise-sets">3×12</span>
                             </li>
                         </ul>
                     </div>
@@ -621,6 +663,7 @@
             <h3>📝 Note Importanti per Giovanna</h3>
             <ul>
                 <li><strong>Recupero tra le serie:</strong> 60-90 secondi per gli esercizi principali, 45-60 per gli accessori</li>
+                <li><strong>Serie di riscaldamento:</strong> Usa un peso leggero per preparare muscoli e articolazioni</li>
                 <li><strong>Progressione:</strong> Aumenta il peso quando riesci a completare tutte le serie con 2 ripetizioni di riserva</li>
                 <li><strong>Idratazione:</strong> Bevi acqua durante tutto l'allenamento</li>
                 <li><strong>Clicca sugli esercizi:</strong> Per vedere tips e consigli di esecuzione!</li>
@@ -643,141 +686,58 @@
 
     <script>
         const exerciseData = {
-            'panca_piana': {
-                title: 'Panca Piana',
-                icon: '🏋️‍♀️',
+            'lat_machine_riscaldamento': {
+                title: 'Lat Machine - Serie di Riscaldamento',
+                icon: '🔥',
+                image: 'lat-machine.jpg',
                 tips: [
-                    'Mantieni sempre i piedi ben saldi a terra',
-                    'Stringi le scapole e mantieni l\'arco naturale della schiena',
-                    'Il bilanciere deve toccare il petto all\'altezza dei capezzoli',
-                    'Spingi in modo esplosivo ma controlla sempre la fase eccentrica',
-                    'Non rimbalzare il bilanciere sul petto'
+                    'Usa un peso molto leggero per preparare le articolazioni',
+                    'Concentrati sulla mobilità delle spalle e sull\'attivazione dei dorsali',
+                    'Esegui il movimento completo per preparare il range di movimento',
+                    'Respira profondamente per ossigenare i muscoli',
+                    'Non affaticarti, è solo preparazione per le serie effettive'
                 ]
             },
-            'chest_press': {
-                title: 'Chest Press (Macchina)',
-                icon: '🔧',
-                tips: [
-                    'Regola l\'altezza del sedile: le maniglie devono essere all\'altezza del petto',
-                    'Mantieni la schiena ben appoggiata allo schienale',
-                    'Non estendere completamente le braccia per non stressare i gomiti',
-                    'Controlla il movimento sia in spinta che in ritorno',
-                    'Respira espirando durante la spinta'
-                ]
-            },
-            'panca_inclinata_manubri': {
-                title: 'Panca Inclinata con Manubri',
-                icon: '💪',
-                tips: [
-                    'Inclina la panca a 30-45 gradi per colpire il petto alto',
-                    'I manubri devono scendere più in basso del petto per un maggior stretch',
-                    'Mantieni sempre il controllo dei pesi, non usare l\'inerzia',
-                    'I gomiti devono essere leggermente flessi, non completamente estesi',
-                    'Concentrati sulla contrazione del petto alto'
-                ]
-            },
-            'shoulder_press': {
-                title: 'Shoulder Press (Macchina)',
-                icon: '🦾',
-                tips: [
-                    'Regola l\'altezza del sedile: le spalle devono essere allineate alle maniglie',
-                    'Mantieni la schiena dritta e gli addominali contratti',
-                    'Non spingere completamente sopra la testa per proteggere le spalle',
-                    'Scendi controllando il peso fino all\'altezza delle orecchie',
-                    'Evita movimenti bruschi e mantieni sempre il controllo'
-                ]
-            },
-            'alzate_laterali_cavi': {
-                title: 'Alzate Laterali ai Cavi',
-                icon: '🕊️',
-                tips: [
-                    'Posizionati al centro della macchina con i cavi incrociati',
-                    'Mantieni una leggera flessione del gomito durante tutto il movimento',
-                    'Solleva fino all\'altezza delle spalle, non oltre',
-                    'Controlla la fase di discesa per massimizzare il lavoro muscolare',
-                    'Non usare il corpo per aiutarti, isola le spalle'
-                ]
-            },
-            'french_press': {
-                title: 'French Press con Bilanciere',
+            'lat_machine_classica': {
+                title: 'Lat Machine Presa Classica',
                 icon: '🎯',
+                image: 'lat-machine.jpg',
                 tips: [
-                    'Usa una presa leggermente più stretta rispetto alle spalle',
-                    'I gomiti devono rimanere fermi e paralleli durante tutto il movimento',
-                    'Scendi controllando il bilanciere fino alla fronte o poco dietro',
-                    'Estendi solo gli avambracci, non muovere le spalle',
-                    'Inizia con pesi leggeri per padroneggiare la tecnica'
+                    'Usa la presa prona (palmi lontani da te) leggermente più larga delle spalle',
+                    'Siediti con le ginocchia ben fissate sotto i cuscinetti',
+                    'Tira la barra verso il petto, non dietro la nuca',
+                    'Concentrati sul tirare con i dorsali, non solo con le braccia',
+                    'Controlla la fase di ritorno della barra senza farla sbattere'
                 ]
             },
-            'hip_thrust': {
-                title: 'Hip Thrust',
-                icon: '🍑',
+            'pulley': {
+                title: 'Pulley (Low Row)',
+                icon: '🚣',
+                image: 'pulley.jpg',
                 tips: [
-                    'Appoggia la parte alta della schiena su una panca stabile',
-                    'I piedi devono essere ben piantati a terra, larghezza spalle',
-                    'Spingi attraverso i talloni contraendo forte i glutei',
-                    'In cima al movimento, glutei contratti e bacino in linea',
-                    'Scendi controllando e senti lo stretch sui glutei'
+                    'Mantieni la schiena dritta e il petto in fuori durante tutto l\'esercizio',
+                    'Tira le maniglie verso l\'addome, non verso il petto',
+                    'Stringi le scapole insieme alla fine del movimento',
+                    'Non usare il corpo per oscillare e aiutarti',
+                    'Senti il lavoro sui dorsali e sui romboidi'
                 ]
             },
-            'leg_press': {
-                title: 'Leg Press',
-                icon: '🦵',
+            'chest_fly_riscaldamento': {
+                title: 'Chest Fly - Serie di Riscaldamento',
+                icon: '🔥',
+                image: 'chest-fly.jpg',
                 tips: [
-                    'Posiziona i piedi alla larghezza delle spalle sulla pedana',
-                    'Non bloccare completamente le ginocchia in estensione',
-                    'Scendi fino a formare un angolo di 90° con le ginocchia',
-                    'Mantieni la schiena sempre appoggiata allo schienale',
-                    'Spingi con tutta la pianta del piede, non solo i talloni'
-                ]
-            },
-            'affondi': {
-                title: 'Affondi',
-                icon: '🚶‍♀️',
-                tips: [
-                    'Il passo deve essere ampio ma naturale',
-                    'Scendi verticalmente, non spostarti in avanti',
-                    'Il ginocchio davanti non deve superare la punta del piede',
-                    'Il ginocchio dietro deve quasi toccare terra',
-                    'Mantieni il busto eretto durante tutto il movimento'
-                ]
-            },
-            'leg_extension': {
-                title: 'Leg Extension',
-                icon: '📐',
-                tips: [
-                    'Regola la macchina: la schiena deve essere ben appoggiata',
-                    'I cuscinetti devono essere sopra le caviglie, non sui piedi',
-                    'Estendi le gambe senza bloccare completamente le ginocchia',
-                    'Controlla la fase di discesa per massimizzare il lavoro',
-                    'Non usare pesi eccessivi che compromettano la tecnica'
-                ]
-            },
-            'leg_curl': {
-                title: 'Leg Curl',
-                icon: '🌙',
-                tips: [
-                    'Posizionati correttamente: anche allineate al fulcro della macchina',
-                    'I cuscinetti devono essere dietro le caviglie',
-                    'Contrai i femorali portando i talloni verso i glutei',
-                    'Non sollevare i fianchi dalla panca durante il movimento',
-                    'Controlla sempre la fase di ritorno'
-                ]
-            },
-            'polpacci_pressa': {
-                title: 'Polpacci alla Pressa',
-                icon: '🦶',
-                tips: [
-                    'Posiziona solo le punte dei piedi sulla pedana, talloni fuori',
-                    'Mantieni le gambe leggermente flesse per tutta la serie',
-                    'Scendi fino al massimo stretch del polpaccio',
-                    'Spingi sulle punte dei piedi contraendo forte i polpacci',
-                    'Fai una pausa in contrazione per massimizzare il lavoro'
+                    'Peso leggero per attivare i pettorali gradualmente',
+                    'Focus sulla mobilità della spalla e preparazione articolare',
+                    'Movimento controllato per riscaldare tutti i muscoli coinvolti',
+                    'Respira profondamente per preparare il sistema cardiovascolare',
+                    'Prepara il pettorale per lo stretch che arriverà nelle serie effettive'
                 ]
             },
             'chest_fly': {
                 title: 'Chest Fly (Macchina)',
                 icon: '🦋',
+                image: 'chest-fly.jpg',
                 tips: [
                     'Regola il sedile: le spalle devono essere allineate al fulcro',
                     'Mantieni sempre una leggera flessione dei gomiti',
@@ -786,116 +746,341 @@
                     'Non usare il corpo per aiutarti nel movimento'
                 ]
             },
-            'lat_machine_inversa': {
-                title: 'Lat Machine Presa Inversa',
-                icon: '🎯',
+            'panca_piana_bilanciere': {
+                title: 'Panca Piana con Bilanciere',
+                icon: '🏋️‍♀️',
+                image: 'panca-piana.jpg',
                 tips: [
-                    'Usa la presa supina (palmi verso di te) più stretta delle spalle',
-                    'Siediti con le ginocchia ben fissate sotto i cuscinetti',
-                    'Tira la barra verso il petto, non dietro la nuca',
-                    'Concentrati sul tirare con i dorsali, non con le braccia',
-                    'Controlla la fase di ritorno della barra'
+                    'Mantieni sempre i piedi ben saldi a terra',
+                    'Stringi le scapole e mantieni l\'arco naturale della schiena',
+                    'Il bilanciere deve toccare il petto all\'altezza dei capezzoli',
+                    'Spingi in modo esplosivo ma controlla sempre la fase eccentrica',
+                    'Non rimbalzare il bilanciere sul petto, fai una pausa'
                 ]
             },
-            'low_row': {
-                title: 'Low Row (Macchina)',
-                icon: '🚣',
+            'curl_cavo_basso': {
+                title: 'Curl al Cavo Basso',
+                icon: '💪',
+                image: 'curl-cavo.jpg',
                 tips: [
-                    'Mantieni la schiena dritta e il petto in fuori',
-                    'Tira le maniglie verso l\'addome, non verso il petto',
-                    'Stringi le scapole insieme alla fine del movimento',
-                    'Non usare il corpo per dondolare e aiutarti',
-                    'Senti il lavoro sui dorsali e sui muscoli centrali della schiena'
+                    'Mantieni i gomiti fermi ai fianchi durante tutto il movimento',
+                    'Contrai i bicipiti in cima al movimento',
+                    'Controlla la fase di discesa senza far sbattere i pesi',
+                    'Non oscillare con il corpo per aiutarti',
+                    'Concentrati sulla connessione mente-muscolo'
+                ]
+            },
+            'hip_thrust_riscaldamento': {
+                title: 'Hip Thrust - Serie di Riscaldamento',
+                icon: '🔥',
+                image: 'hip-thrust.jpg',
+                tips: [
+                    'Peso leggero per attivare i glutei',
+                    'Concentrati sulla mobilità dell\'anca',
+                    'Preparazione per l\'attivazione neuromuscolare',
+                    'Focus sulla posizione corretta',
+                    'Riscalda tutta la catena posteriore'
+                ]
+            },
+            'hip_thrust': {
+                title: 'Hip Thrust',
+                icon: '🍑',
+                image: 'hip-thrust.jpg',
+                tips: [
+                    'Posiziona le spalle sulla panca e i piedi ben saldi a terra',
+                    'Spingi attraverso i talloni, non le punte',
+                    'Contrai fortemente i glutei in cima al movimento',
+                    'Mantieni il core attivo per proteggere la schiena',
+                    'Non iperestendere la schiena, fermati quando cosce e busto sono allineati'
+                ]
+            },
+            'leg_extension': {
+                title: 'Leg Extension',
+                icon: '🦵',
+                image: 'leg-extension.jpg',
+                tips: [
+                    'Regola lo schienale per un supporto completo della schiena',
+                    'I rulli devono essere sopra le caviglie, non sui piedi',
+                    'Estendi completamente le gambe e contrai i quadricipiti',
+                    'Controlla la fase di discesa',
+                    'Non usare troppo peso per evitare stress al ginocchio'
+                ]
+            },
+            'leg_curl': {
+                title: 'Leg Curl',
+                icon: '🦵',
+                image: 'leg-curl.jpg',
+                tips: [
+                    'Sdraiati completamente a pancia in giù',
+                    'I rulli devono essere sopra le caviglie',
+                    'Fletti le gambe portando i talloni verso i glutei',
+                    'Senti il lavoro sui femorali, non sui polpacci',
+                    'Controlla il movimento in entrambe le fasi'
+                ]
+            },
+            'kick_back_macchina': {
+                title: 'Macchinario Kick Back',
+                icon: '🍑',
+                image: 'kick-back-macchina.jpg',
+                tips: [
+                    'Posiziona bene il ginocchio sul supporto',
+                    'Mantieni la schiena dritta e il core attivo',
+                    'Spingi all\'indietro con il gluteo, non con la gamba',
+                    'Non iperestendere la schiena durante il movimento',
+                    'Contrai il gluteo in cima al movimento'
+                ]
+            },
+            'abductor': {
+                title: 'Abductor (Abduttori)',
+                icon: '↔️',
+                image: 'abductor.jpg',
+                tips: [
+                    'Siediti con la schiena ben appoggiata allo schienale',
+                    'Posiziona le gambe sui supporti laterali',
+                    'Apri le gambe spingendo contro la resistenza',
+                    'Controlla il movimento sia in apertura che in chiusura',
+                    'Senti il lavoro sui glutei medi'
+                ]
+            },
+            'alzate_laterali': {
+                title: 'Alzate Laterali',
+                icon: '🕊️',
+                image: 'alzate-laterali.jpg',
+                tips: [
+                    'Mantieni una leggera flessione dei gomiti',
+                    'Solleva le braccia lateralmente fino all\'altezza delle spalle',
+                    'Non superare la linea delle spalle per evitare impingement',
+                    'Controlla la fase di discesa',
+                    'Immagina di versare acqua da una brocca'
+                ]
+            },
+            'panca_inclinata_bilanciere_riscaldamento': {
+                title: 'Panca Inclinata - Serie di Riscaldamento',
+                icon: '🔥',
+                image: 'panca-inclinata.jpg',
+                tips: [
+                    'Peso leggero per preparare spalle e pettorali',
+                    'Focus sull\'attivazione della parte alta del petto',
+                    'Preparazione articolare per l\'inclinazione',
+                    'Movimento controllato per il riscaldamento',
+                    'Range completo di movimento per la mobilità'
+                ]
+            },
+            'panca_inclinata_bilanciere': {
+                title: 'Panca Inclinata con Bilanciere',
+                icon: '📐',
+                image: 'panca-inclinata.jpg',
+                tips: [
+                    'Inclina la panca a 30-45 gradi',
+                    'Mantieni le scapole retratte',
+                    'Il bilanciere deve toccare la parte alta del petto',
+                    'Spingi il bilanciere leggermente indietro rispetto alla verticale',
+                    'Concentrati sulla parte alta dei pettorali'
+                ]
+            },
+            'chest_press': {
+                title: 'Chest Press (Macchina)',
+                icon: '🤖',
+                image: 'chest-press.jpg',
+                tips: [
+                    'Regola il sedile: le maniglie devono essere all\'altezza del petto',
+                    'Mantieni la schiena completamente appoggiata',
+                    'Spingi le maniglie in avanti senza bloccare completamente i gomiti',
+                    'Controlla il movimento in entrambe le fasi',
+                    'Respira espirando durante la spinta'
+                ]
+            },
+            'tirate_dorso_riscaldamento': {
+                title: 'Macchinario Tirate Dorso - Riscaldamento',
+                icon: '🔥',
+                image: 'macchinariotitratedtorso.jpg',
+                tips: [
+                    'Peso leggero per attivare i dorsali',
+                    'Focus sulla mobilità scapolare',
+                    'Preparazione per l\'attivazione dei romboidi',
+                    'Movimento controllato per riscaldare',
+                    'Range completo per la preparazione'
+                ]
+            },
+            'tirate_dorso': {
+                title: 'Macchinario Tirate Dorso',
+                icon: '🔄',
+                image: 'macchinariotitratedtorso.jpg',
+                tips: [
+                    'Siediti con il petto contro il supporto',
+                    'Afferra le maniglie e tira indietro stringendo le scapole',
+                    'Mantieni il petto in fuori durante tutto il movimento',
+                    'Senti il lavoro sui dorsali e sui romboidi',
+                    'Non usare lo slancio del corpo'
                 ]
             },
             'trazioni_assistite': {
                 title: 'Trazioni Assistite',
-                icon: '🆙',
+                icon: '⬆️',
+                image: 'trazioni-assistite.jpg',
                 tips: [
-                    'Imposta l\'assistenza gradualmente, riducila nel tempo',
-                    'Usa una presa leggermente più larga delle spalle',
-                    'Inizia dalla posizione di braccia estese, non oscillare',
+                    'Usa l\'assistenza necessaria per completare tutte le ripetizioni',
+                    'Mantieni la presa leggermente più larga delle spalle',
                     'Tira il corpo verso l\'alto concentrandoti sui dorsali',
-                    'Scendi controllando il movimento, non lasciarti cadere'
+                    'Controlla la fase di discesa',
+                    'Mantieni il core attivo per la stabilità'
                 ]
             },
-            'curl_manubri': {
-                title: 'Curl con Manubri',
-                icon: '💪',
+            'macchinario_tricipiti': {
+                title: 'Macchinario Tricipiti',
+                icon: '🔻',
+                image: 'macchinario-tricipiti.jpg',
                 tips: [
-                    'Mantieni i gomiti fissi ai fianchi durante tutto il movimento',
-                    'Non oscillare il corpo per aiutarti',
-                    'Contrai i bicipiti in cima al movimento',
-                    'Scendi controllando la fase eccentrica',
-                    'Puoi alternarti tra le braccia per maggior concentrazione'
+                    'Siediti con la schiena ben appoggiata',
+                    'Mantieni i gomiti fermi ai fianchi',
+                    'Estendi le braccia verso il basso contraendo i tricipiti',
+                    'Non usare le spalle per aiutarti',
+                    'Controlla il movimento in entrambe le fasi'
                 ]
             },
-            'stacchi_rumeni': {
-                title: 'Stacchi Rumeni',
-                icon: '🏗️',
+            'leg_press_verticale_riscaldamento': {
+                title: 'Leg Press Verticale - Riscaldamento',
+                icon: '🔥',
+                image: 'leg-press-verticale.jpg',
                 tips: [
-                    'Mantieni sempre una leggera flessione delle ginocchia',
-                    'Sposta i fianchi indietro, non piegare solo la schiena',
-                    'La barra deve scorrere vicina alle gambe',
-                    'Senti lo stretch dei femorali nella fase di discesa',
-                    'Contrai forte i glutei per tornare in posizione eretta'
+                    'Peso leggero per preparare ginocchia e anche',
+                    'Focus sulla mobilità dell\'anca',
+                    'Preparazione per il carico delle serie effettive',
+                    'Movimento completo per il riscaldamento',
+                    'Attivazione di tutta la catena cinetica'
                 ]
             },
-            'adduttori_abduttori': {
-                title: 'Adduttori/Abduttori',
-                icon: '⚡',
+            'leg_press_verticale': {
+                title: 'Leg Press Verticale',
+                icon: '⬆️',
+                image: 'leg-press-verticale.jpg',
                 tips: [
-                    'Regola la macchina secondo la tua apertura naturale',
+                    'Posiziona i piedi larghi quanto le spalle sulla pedana',
+                    'Scendi fino a formare un angolo di 90 gradi con le ginocchia',
+                    'Spingi attraverso i talloni per tornare su',
                     'Mantieni la schiena ben appoggiata allo schienale',
-                    'Per gli adduttori: stringi le gambe senza movimenti bruschi',
-                    'Per gli abduttori: apri le gambe controllando il movimento',
-                    'Non usare pesi eccessivi, concentrati sulla qualità del movimento'
+                    'Non bloccare completamente le ginocchia in alto'
+                ]
+            },
+            'kick_back_cavo': {
+                title: 'Kick Back al Cavo',
+                icon: '🦵',
+                image: 'kick-back-cavo.jpg',
+                tips: [
+                    'Aggancia la cinghia alla caviglia',
+                    'Mantieni il corpo stabile tenendoti al supporto',
+                    'Calcia all\'indietro con il gluteo, non con la gamba',
+                    'Contrai il gluteo in cima al movimento',
+                    'Controlla il ritorno senza far sbattere i pesi'
+                ]
+            },
+            'leg_press_orizzontale': {
+                title: 'Leg Press Orizzontale',
+                icon: '➡️',
+                image: 'leg-press-orizzontale.jpg',
+                tips: [
+                    'Siediti con la schiena completamente appoggiata',
+                    'Posiziona i piedi al centro della pedana',
+                    'Scendi controllando il peso fino a 90 gradi',
+                    'Spingi con forza attraverso i talloni',
+                    'Mantieni le ginocchia allineate con i piedi'
+                ]
+            },
+            'macchinario_polpacci': {
+                title: 'Macchinario Polpacci',
+                icon: '🦵',
+                image: 'macchinario-polpacci.jpg',
+                tips: [
+                    'Posiziona la punta dei piedi sul supporto',
+                    'Solleva il corpo spingendo sulle punte',
+                    'Contrai i polpacci in cima al movimento',
+                    'Scendi lentamente per allungare i polpacci',
+                    'Mantieni il peso sui supporti delle spalle'
+                ]
+            },
+            'adductor': {
+                title: 'Adductor (Adduttori)',
+                icon: '↔️',
+                image: 'adductor.jpg',
+                tips: [
+                    'Siediti con la schiena ben appoggiata',
+                    'Posiziona le gambe sui supporti interni',
+                    'Chiudi le gambe contraendo gli adduttori',
+                    'Controlla sia la fase di chiusura che di apertura',
+                    'Mantieni il core attivo durante l\'esercizio'
+                ]
+            },
+            'shoulder_press': {
+                title: 'Shoulder Press',
+                icon: '⬆️',
+                image: 'shoulder-press.jpg',
+                tips: [
+                    'Siediti con la schiena ben appoggiata allo schienale',
+                    'Afferra le maniglie con presa prona',
+                    'Spingi verso l\'alto senza bloccare completamente i gomiti',
+                    'Controlla la fase di discesa',
+                    'Mantieni il core attivo per la stabilità'
                 ]
             }
         };
 
-        const modal = document.getElementById('exerciseModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalBody = document.getElementById('modalBody');
-        const closeBtn = document.querySelector('.close');
-
-        function showExerciseInfo(exerciseKey) {
-            const exercise = exerciseData[exerciseKey];
-            if (!exercise) return;
-
-            modalTitle.textContent = exercise.title;
+        // Funzione per mostrare il modal con i tips dell'esercizio
+        function showExerciseInfo(exerciseId) {
+            const exercise = exerciseData[exerciseId];
+            const modal = document.getElementById('exerciseModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
             
-            let bodyContent = `
-                <div class="exercise-image">${exercise.icon}</div>
-                <div class="tips-section">
-                    <h4>💡 Tips per l'esecuzione:</h4>
-            `;
+            if (exercise) {
+                modalTitle.innerHTML = `${exercise.icon} ${exercise.title}`;
+                
+                let tipsHtml = '<div class="exercise-image">';
+                
+                // Verifica se l'immagine esiste, altrimenti usa l'emoticon
+                if (exercise.image) {
+                    tipsHtml += `<img src="${exercise.image}" alt="${exercise.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`;
+                    tipsHtml += `<div class="exercise-image-placeholder" style="display:none;">${exercise.icon}</div>`;
+                } else {
+                    tipsHtml += `<div class="exercise-image-placeholder">${exercise.icon}</div>`;
+                }
+                
+                tipsHtml += '</div>';
+                tipsHtml += '<div class="tips-section">';
+                tipsHtml += '<h4>💡 Consigli per l\'esecuzione:</h4>';
+                
+                exercise.tips.forEach(tip => {
+                    tipsHtml += `<div class="tip-item">${tip}</div>`;
+                });
+                
+                tipsHtml += '</div>';
+                modalBody.innerHTML = tipsHtml;
+                modal.style.display = 'block';
+            }
+        }
+
+        // Gestione del modal
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('exerciseModal');
+            const closeBtn = document.querySelector('.close');
             
-            exercise.tips.forEach(tip => {
-                bodyContent += `<div class="tip-item">✓ ${tip}</div>`;
+            // Chiudi il modal quando si clicca sulla X
+            closeBtn.onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            // Chiudi il modal quando si clicca fuori dal contenuto
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            }
+            
+            // Chiudi il modal con il tasto ESC
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                }
             });
-            
-            bodyContent += `</div>`;
-            modalBody.innerHTML = bodyContent;
-            
-            modal.style.display = 'block';
-        }
-
-        closeBtn.onclick = function() {
-            modal.style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-
-        // Chiudi con ESC
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                modal.style.display = 'none';
-            }
         });
     </script>
 </body>
